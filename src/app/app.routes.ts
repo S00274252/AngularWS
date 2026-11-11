@@ -21,5 +21,8 @@ export const routes: Routes = [
         path: 'cars/:id',
         component: CarDetails
     }, 
-    
+    {
+        path: 'cars/:id/edit',
+        component: CarForm
+    }, 
 ];

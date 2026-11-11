@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Car, CreateCarDto } from '../models/car.model';
+import { Car, CreateCarDto, UpdateCarDto } from '../models/car.model';
 import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -29,6 +29,14 @@ getCars(): Observable<Car[]> {
         catchError((err) => this.handleError(err))
       )
   }
+
+  updateCar(id: string, changes: UpdateCarDto): Observable<Car> {
+    return this.http.put<Car>(`${this.apiUrl}/${id}`, changes);
+  }
+
+  deleteCar(id: string): Observable<void> { 
+   return this.http.delete<void>(`${this.apiUrl}/${id}`); 
+  } 
 
  private handleError(error: HttpErrorResponse): Observable<never> {
     let message: string;
