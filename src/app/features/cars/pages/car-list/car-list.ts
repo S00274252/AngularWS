@@ -14,8 +14,6 @@ import { withLoadState } from '../../../../shared/load-state';
 export class CarList  {
 
 private carService = inject(CarService);
-  
-
    state = toSignal(withLoadState(this.carService.getCars()), { requireSync: true });
 }
 

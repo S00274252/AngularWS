@@ -52,8 +52,19 @@
   } @else if (carForm.controls.year.hasError('max')) {
     <mat-error>Year must be at most {{ currentYear + 1 }}</mat-error>
   }
-  
-  
+    @if (carForm.controls.make.hasError('blank')) {
+    <mat-error>Make cannot be only spaces</mat-error>
+  }
+    @if (carForm.controls.model.hasError('blank')) {
+    <mat-error>Model cannot be only spaces</mat-error>
+  }
+    @if (carForm.controls.make.hasError('forbiddenValue')) {
+    <mat-error>Make contains a forbidden value</mat-error>
+  }
+    @if (carForm.controls.model.hasError('forbiddenValue')) {
+    <mat-error>Model contains a forbidden value</mat-error>
+  }
+
   @if (saveError(); as message) { <p role="alert">{{ message }}</p> }
   <div class="button-group">
     <button matButton="filled" type="submit" [disabled]="saving()">
